@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>BLOOD INVENTORY</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+        }
+
+        h2 {
+            color: rgb(219, 20, 20);
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+            color: #b30000;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            padding: 15px;
+        }
+
+        table {
+            background: white;
+            margin: auto;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+        }
+
+        th {
+            background: #b30000;
+            color: white;
+        }
+
+        td {
+            background: #ffe6e6;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2>Blood Donation</h2>
+
+    <div>
+        <a href="login project.html">Home</a>
+        <a href="donor.html">Donor</a>
+        <a href="Receiver.html">Receiver</a>
+        <a href="inventory.html">Inventory</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
+
+<h1>🩸 Blood Inventory</h1>
+
+<table>
+
+    <tr>
+        <th>Blood Group</th>
+        <th>Available Units</th>
+    </tr>
+
+    <tr>
+        <td>A+</td>
+        <td id="Apositive">0</td>
+    </tr>
+
+    <tr>
+        <td>A-</td>
+        <td id="Anegative">0</td>
+    </tr>
+
+    <tr>
+        <td>B+</td>
+        <td id="Bpositive">0</td>
+    </tr>
+
+    <tr>
+        <td>B-</td>
+        <td id="Bnegative">0</td>
+    </tr>
+
+    <tr>
+        <td>AB+</td>
+        <td id="ABpositive">0</td>
+    </tr>
+
+    <tr>
+        <td>AB-</td>
+        <td id="ABnegative">0</td>
+    </tr>
+
+    <tr>
+        <td>O+</td>
+        <td id="Opositive">0</td>
+    </tr>
+
+    <tr>
+        <td>O-</td>
+        <td id="Onegative">0</td>
+    </tr>
+
+</table>
+
+<script>
+    document.getElementById("Apositive").innerText =
+        localStorage.getItem("Apositive") || 0;
+
+    document.getElementById("Anegative").innerText =
+        localStorage.getItem("Anegative") || 0;
+
+    document.getElementById("Bpositive").innerText =
+        localStorage.getItem("Bpositive") || 0;
+
+    document.getElementById("Bnegative").innerText =
+        localStorage.getItem("Bnegative") || 0;
+
+    document.getElementById("ABpositive").innerText =
+        localStorage.getItem("ABpositive") || 0;
+
+    document.getElementById("ABnegative").innerText =
+        localStorage.getItem("ABnegative") || 0;
+
+    document.getElementById("Opositive").innerText =
+        localStorage.getItem("Opositive") || 0;
+
+    document.getElementById("Onegative").innerText =
+        localStorage.getItem("Onegative") || 0;
+</script>
+
+</body>
+</html>

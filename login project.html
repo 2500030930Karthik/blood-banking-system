@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>BLOOD DONATION</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+            color: #b30000;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            padding: 15px;
+        }
+
+        table {
+            background: white;
+            margin: auto;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        input, select {
+            padding: 7px;
+        }
+
+        input[type="submit"] {
+            background: #b30000;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background: #800000;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+
+        <h2>Blood Donation</h2>
+
+        <div>
+            <a href="login project.html">Home</a>
+            <a href="#">Contact</a>
+        </div>
+
+    </nav>
+
+    <h1>🩸 Blood Donation Login</h1>
+
+    <form onsubmit="login(event)">
+
+        <table>
+
+            <tr>
+                <td>Login As</td>
+
+                <td>
+                    <input type="radio" name="user" value="donor">
+                    Donor
+
+                    <input type="radio" name="user" value="receiver">
+                    Receiver
+                </td>
+            </tr>
+
+            <tr>
+                <td>Username</td>
+
+                <td>
+                    <input type="text" placeholder="Username"required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>Password</td>
+
+                <td>
+                    <input type="password" placeholder="Password"required>
+                </td>
+            <tr>
+                <td colspan="2" align="center">
+
+                <input type="submit" value="Login">
+
+                </td>
+            </tr>
+
+        </table>
+
+    </form>
+
+    <script>
+
+        function login(event) {
+
+            event.preventDefault();
+
+            let user = document.querySelector('input[name="user"]:checked');
+
+            if (user && user.value == "donor") {
+
+                window.location.href = "./donor.html";
+
+            }else if(user && user.value == "receiver"){
+
+                window.location.href = "./Receiver.html"
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

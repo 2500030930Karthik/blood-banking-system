@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DONOR REGISTRATION</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+        }
+
+        h2 {
+            color: rgb(219, 20, 20);
+        }
+
+        nav {
+            background: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        nav a {
+            margin: 10px;
+            text-decoration: none;
+            color: #b30000;
+        }
+
+        form {
+            background: #b30000;
+            padding: 20px;
+            width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            color: white;
+        }
+
+        input, select {
+            padding: 8px;
+            margin-top: 5px;
+            width: 95%;
+        }
+
+        button {
+            background: white;
+            color: #b30000;
+            padding: 10px 25px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <h2>Blood Donation</h2>
+
+    <div>
+        <a href="login project.html">Home</a>
+        <a href="receiver.html">Receiver</a>
+        <a href="#">Contact</a>
+    </div>
+</nav>
+
+<h1>🩸 Donor Registration</h1>
+
+<form onsubmit="registerDonor(event)">
+
+    <label>Name:</label>
+    <input type="text" placeholder="Enter your name" required>
+
+    <label>Age:</label>
+    <input type="number" placeholder="Enter your age" required>
+
+    <label>Gender:</label>
+    <select>
+        <option>Male</option>
+        <option>Female</option>
+    </select>
+
+    <label>Blood Group:</label>
+    <select id="blood" required>
+        <option value="">Select Group</option>
+        <option value="Apositive">A+</option>
+        <option value="Anegative">A-</option>
+        <option value="Bpositive">B+</option>
+        <option value="Bnegative">B-</option>
+        <option value="ABpositive">AB+</option>
+        <option value="ABnegative">AB-</option>
+        <option value="Opositive">O+</option>
+        <option value="Onegative">O-</option>
+    </select>
+
+    <label>State:</label>
+    <input type="text" placeholder="Enter your State" required>
+
+    <label>City:</label>
+    <input type="text" placeholder="Enter your city" required>
+
+    <label>Phone Number:</label>
+    <input type="tel" placeholder="Enter your phone number" required>
+
+    <button type="submit">Register</button>
+
+</form>
+
+<script>
+
+    function registerDonor(event) {
+
+        event.preventDefault();
+
+        let blood = document.getElementById("blood").value;
+
+        let count = localStorage.getItem(blood) || 0;
+
+        localStorage.setItem(blood, Number(count) + 1);
+
+        alert("Donor Registered Successfully!");
+
+        window.location.href = "inventory.html";
+    }
+
+</script>
+
+</body>
+
+</html>
