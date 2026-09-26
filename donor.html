@@ -61,13 +61,15 @@
 <body>
 
 <nav>
+
     <h2>Blood Donation</h2>
 
     <div>
         <a href="login project.html">Home</a>
-        <a href="receiver.html">Receiver</a>
+        <a href="Receiver.html">Receiver</a>
         <a href="#">Contact</a>
     </div>
+
 </nav>
 
 <h1>🩸 Donor Registration</h1>
@@ -75,20 +77,23 @@
 <form onsubmit="registerDonor(event)">
 
     <label>Name:</label>
-    <input type="text" placeholder="Enter your name" required>
+    <input type="text" id="name" placeholder="Enter your name" required>
 
     <label>Age:</label>
-    <input type="number" placeholder="Enter your age" required>
+    <input type="number" id="age" placeholder="Enter your age" required>
 
     <label>Gender:</label>
-    <select>
+    <select id="gender">
         <option>Male</option>
         <option>Female</option>
     </select>
 
     <label>Blood Group:</label>
+
     <select id="blood" required>
+
         <option value="">Select Group</option>
+
         <option value="Apositive">A+</option>
         <option value="Anegative">A-</option>
         <option value="Bpositive">B+</option>
@@ -97,16 +102,17 @@
         <option value="ABnegative">AB-</option>
         <option value="Opositive">O+</option>
         <option value="Onegative">O-</option>
+
     </select>
 
     <label>State:</label>
-    <input type="text" placeholder="Enter your State" required>
+    <input type="text" id="state" placeholder="Enter your State" required>
 
     <label>City:</label>
-    <input type="text" placeholder="Enter your city" required>
+    <input type="text" id="city" placeholder="Enter your city" required>
 
     <label>Phone Number:</label>
-    <input type="tel" placeholder="Enter your phone number" required>
+    <input type="tel" id="phone" placeholder="Enter your phone number" required>
 
     <button type="submit">Register</button>
 
@@ -118,7 +124,27 @@
 
         event.preventDefault();
 
+        let name = document.getElementById("name").value;
+        let age = document.getElementById("age").value;
+        let gender = document.getElementById("gender").value;
         let blood = document.getElementById("blood").value;
+        let state = document.getElementById("state").value;
+        let city = document.getElementById("city").value;
+        let phone = document.getElementById("phone").value;
+
+        let donors = JSON.parse(localStorage.getItem("donors")) || [];
+
+        donors.push({
+            name: name,
+            age: age,
+            gender: gender,
+            blood: blood,
+            state: state.toLowerCase(),
+            city: city.toLowerCase(),
+            phone: phone
+        });
+
+        localStorage.setItem("donors", JSON.stringify(donors));
 
         let count = localStorage.getItem(blood) || 0;
 
@@ -127,6 +153,7 @@
         alert("Donor Registered Successfully!");
 
         window.location.href = "inventory.html";
+
     }
 
 </script>

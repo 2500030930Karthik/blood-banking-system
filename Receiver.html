@@ -61,15 +61,17 @@
 <body>
 
 <nav>
+
     <h2>Blood Donation</h2>
 
     <div>
         <a href="login project.html">Home</a>
         <a href="donor.html">Donor</a>
-        <a href="receiver.html">Receiver</a>
+        <a href="Receiver.html">Receiver</a>
         <a href="inventory.html">Inventory</a>
         <a href="#">Contact</a>
     </div>
+
 </nav>
 
 <h1>🩸 Blood Request</h1>
@@ -83,8 +85,11 @@
     <input type="number" placeholder="Enter age" required>
 
     <label>Blood Group Required:</label>
+
     <select id="blood" required>
+
         <option value="">Select Group</option>
+
         <option value="Apositive">A+</option>
         <option value="Anegative">A-</option>
         <option value="Bpositive">B+</option>
@@ -93,16 +98,17 @@
         <option value="ABnegative">AB-</option>
         <option value="Opositive">O+</option>
         <option value="Onegative">O-</option>
+
     </select>
 
     <label>Hospital Name:</label>
     <input type="text" placeholder="Enter hospital name" required>
 
     <label>State:</label>
-    <input type="text" placeholder="Enter State" required>
+    <input type="text" id="state" placeholder="Enter State" required>
 
     <label>City:</label>
-    <input type="text" placeholder="Enter city" required>
+    <input type="text" id="city" placeholder="Enter city" required>
 
     <label>Phone Number:</label>
     <input type="tel" placeholder="Enter phone number" required>
@@ -121,26 +127,51 @@
         event.preventDefault();
 
         let blood = document.getElementById("blood").value;
+
+        let state = document.getElementById("state").value.toLowerCase();
+
+        let city = document.getElementById("city").value.toLowerCase();
+
         let units = Number(document.getElementById("units").value);
+
+        let donors = JSON.parse(localStorage.getItem("donors")) || [];
+
+        let matchingDonors = donors.filter(function(donor) {
+
+            return donor.blood == blood &&
+                   donor.state == state &&
+                   donor.city == city;
+
+        });
 
         let available = Number(localStorage.getItem(blood) || 0);
 
-        if (available >= units) {
+        if (matchingDonors.length >= units && available >= units) {
 
             localStorage.setItem(blood, available - units);
 
-            alert("Blood Request Successful!");
+            alert("Matching Donor Found! Blood Request Successful!");
 
             window.location.href = "inventory.html";
 
-        } else {
+        }
+
+        else if (matchingDonors.length == 0) {
+
+            alert("No Matching Donor Found!");
+
+        }
+
+        else {
 
             alert("Blood Not Available!");
 
         }
+
     }
 
 </script>
 
 </body>
+
 </html>
